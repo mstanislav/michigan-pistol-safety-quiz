@@ -12,7 +12,7 @@ class QuizController < UIViewController
                    { 'q' => "It is illegal to sell a pistol to a person under 18 years of age.", 'a' => 'True' },
                    { 'q' => "The law requires a person to report the theft of his or her pistol to police within one year.", 'a' => 'False' },
                    { 'q' => "A person is permitted to transport a pistol for a lawful purpose if the owner or occupant of the vehicle is the registered owner of the firearm and the pistol is unloaded and in a closed case in the trunk of the vehicle.", 'a' => 'True' },
-                   { 'q' => "When storing a pistol, for saety reasons the ammunition should never be stored separately from the pistol.", 'a' => 'False' },
+                   { 'q' => "When storing a pistol, for safety reasons the ammunition should never be stored separately from the pistol.", 'a' => 'False' },
                    { 'q' => "The law requires that when presenting a pistol to police for a safety inspection, the pistol is unloaded and encased or equipped with a trigger locking mechanism.", 'a' => 'True' },
                    { 'q' => "When storing a pistol it should be unloaded and placed in a safe place out of the reach of children.", 'a' => 'True' },
                    { 'q' => "Possession of a pistol while under the influence of alcohol is unlawful.", 'a' => 'True' },
