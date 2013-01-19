@@ -5,6 +5,7 @@ class QuizController < UIViewController
     self.view = UIView.alloc.init
     self.view.backgroundColor = UIColor.whiteColor
     navigationItem.title = 'Michigan Pistol Safety Quiz'
+
     @questions = [ { 'q' => "You should treat every pistol as if it were loaded.", 'a' => 'True' },
                    { 'q' => "You should always keep the barrel pointed in a safe direction.", 'a' => 'True' },
                    { 'q' => "You should never put your finger on the trigger until ready to fire at a proper target.", 'a' => 'True' },
@@ -31,10 +32,9 @@ class QuizController < UIViewController
     @question_label = UILabel.new
     @question_label.font = UIFont.systemFontOfSize(24)
     @question_label.backgroundColor = UIColor.clearColor
-    @question_label.textAlignment = UITextAlignmentLeft
     @question_label.lineBreakMode = UILineBreakModeWordWrap
     @question_label.numberOfLines = 0
-    @question_label.frame = [[@margin, @margin], [300, 260]]
+    @question_label.frame = [[@margin, @margin], [310, 260]]
     view.addSubview @question_label
                                                                                                                          
     answer_true = UIButton.buttonWithType UIButtonTypeRoundedRect
@@ -91,6 +91,8 @@ private
   def get_question
     @index +=1
     @question_label.text = @questions[@index]['q']
+    @question_label.frame = [[@margin, @margin], [310, 260]]
+    @question_label.sizeToFit
   end
 
   def reset_quiz
