@@ -1,5 +1,5 @@
 class QuizController < UIViewController
-  attr_accessor :window
+  attr_accessor :window, :tabbar
 
   def loadView
     self.view = UIView.alloc.init
@@ -23,6 +23,10 @@ class QuizController < UIViewController
                    { 'q' => "Bullets fired at flat surfaces will never glance off in an unpredictable direction.", 'a' => 'False' } ]
 
     screen_setup
+  end
+
+  def viewWillAppear(animated)
+    navigationController.setNavigationBarHidden(true, animated:true)
   end
 
   def screen_setup
