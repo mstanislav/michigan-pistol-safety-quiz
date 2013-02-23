@@ -4,6 +4,7 @@ class QuizController < UIViewController
   def loadView
     self.view = UIView.alloc.init
     self.view.backgroundColor = UIColor.whiteColor
+    self.view.userInteractionEnabled = true
     navigationItem.title = 'Michigan Pistol Safety Quiz'
 
     @questions = [ { 'q' => "You should treat every pistol as if it were loaded.", 'a' => 'True' },
@@ -40,17 +41,19 @@ class QuizController < UIViewController
     @question_label.numberOfLines = 0
     @question_label.frame = [[@margin, @margin], [310, 260]]
     view.addSubview @question_label
-                                                                                                                         
-    answer_true = UIButton.buttonWithType UIButtonTypeRoundedRect
-    answer_true.setTitle('True', forState:UIControlStateNormal)
-    answer_true.addTarget(self, action:'show_answer:', forControlEvents:UIControlEventTouchUpInside)
-    answer_true.frame = [[40,280], [100,50]]
+
+    answer_true = UIButton.buttonWithType(UIButtonTypeCustom)
+    answer_true.frame = [[40,275], [64,64]]
+    answer_true.setImage(UIImage.imageNamed("checkmark.png"), forState: UIControlStateNormal)
+    answer_true.tag = 0
+    answer_true.addTarget(self, action:'show_answer:', forControlEvents: UIControlEventTouchUpInside)
     view.addSubview answer_true
 
-    answer_false = UIButton.buttonWithType UIButtonTypeRoundedRect 
-    answer_false.setTitle('False', forState:UIControlStateNormal)
-    answer_false.addTarget(self, action:'show_answer:', forControlEvents:UIControlEventTouchUpInside)
-    answer_false.frame = [[180,280], [100,50]]
+    answer_false = UIButton.buttonWithType(UIButtonTypeCustom)
+    answer_false.frame = [[220,285], [48,48]]
+    answer_false.setImage(UIImage.imageNamed("x.png"), forState: UIControlStateNormal)
+    answer_false.tag = 1
+    answer_false.addTarget(self, action:'show_answer:', forControlEvents: UIControlEventTouchUpInside)
     view.addSubview answer_false
 
     @result_label = UILabel.new
@@ -74,7 +77,8 @@ class QuizController < UIViewController
 
 private
   def show_answer(sender)
-    if sender.titleForState(UIControlStateNormal) == @questions[@index]['a']
+    correct = @questions[@index]['a'] == 'True' ? 0 : 1 
+    if sender.tag == correct
       @score += 1 
       @result_label.text = "Correct!"
       @result_label.textColor = UIColor.greenColor 
